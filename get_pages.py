@@ -60,7 +60,7 @@ if __name__ == '__main__':
 	url_list = get.generate_url_list()
 	#在网址列表遍历各个网址
 	for url in url_list:
-		comic  = book(url)	#建立一个book对象 
+		comic  = book("http://www.1kkk.com"+url)	#建立一个book对象 
 		print(comic)
 		print("正在准备下次下载......")
 		time.sleep(2)

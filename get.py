@@ -21,13 +21,15 @@ def search_key(text):
 	return key
 def generate_url_list():
 	'''生成网址列表'''
-	url_list = []
+	url = "http://www.1kkk.com/manhua14421/"
+	res = requests.get(url)
+	html = etree.HTML(res.content)
+	url_list = html.xpath('//*[@id="detail-list-select-1"]/li/a/@href')
+	red_list = html.xpath('//*[@id="detail-list-select-1"]/ul/li/a/@href')
+	url_list.extend(red_list)
 
-	with open("ct.csv","r") as f:
-		for url in f.readlines():
-			url_list.append(url.strip("\n"))
-	return url_list
 	#print(url_list)	#for test
+	return url_list
 #@pysnooper.snoop()
 def get_code_list(text):
 	'''找出密码本'''
